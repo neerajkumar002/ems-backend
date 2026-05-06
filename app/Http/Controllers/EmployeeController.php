@@ -36,4 +36,19 @@ class EmployeeController extends Controller
 
         return response()->json(["data" => $employee], 200);
     }
+
+    //delete employee by id
+
+    public function destroy($id)
+    {
+
+
+        //find record
+        $employee = Employee::findOrFail($id);
+
+        //delete record
+        $employee->delete();
+
+        return response()->json(["message" => "employee successfuly deleted"], 200);
+    }
 }
