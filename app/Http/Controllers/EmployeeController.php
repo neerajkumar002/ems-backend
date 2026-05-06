@@ -27,4 +27,13 @@ class EmployeeController extends Controller
 
         return response()->json(["data" => $employee], 201);
     }
+
+    //get employee by id
+
+    public function show($id)
+    {
+        $employee = Employee::find($id);
+
+        return response()->json(["data" => $employee], 200);
+    }
 }
