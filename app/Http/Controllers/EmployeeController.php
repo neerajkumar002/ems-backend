@@ -28,6 +28,25 @@ class EmployeeController extends Controller
         return response()->json(["data" => $employee], 201);
     }
 
+
+
+    public function update(Request $request, $id)
+    {
+        //find employee
+        $employee = Employee::findOrFail($id);
+
+        //update record
+        $employee->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "position" => $request->position,
+            "salary" => $request->salary
+
+        ]);
+
+        return response()->json(["message" => "Employee updated successfully", "data" => $employee], 200);
+    }
+
     //get employee by id
 
     public function show($id)
